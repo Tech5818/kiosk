@@ -1,5 +1,6 @@
 package com.example.kiosk.service
 
+import com.example.kiosk.entity.Kiosk
 import com.example.kiosk.entity.dto.RegisterKioskDTO
 import com.example.kiosk.repository.KioskRepository
 import jakarta.transaction.Transactional
@@ -16,5 +17,10 @@ class KioskService(@Autowired private val kioskRepository: KioskRepository) {
             savedKiosk.id,
             savedKiosk.number
         )
+    }
+
+    fun findAll(): List<Kiosk> {
+        return  kioskRepository.findAll()
+
     }
 }
