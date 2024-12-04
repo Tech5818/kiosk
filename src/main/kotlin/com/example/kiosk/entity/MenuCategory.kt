@@ -24,4 +24,4 @@ class MenuCategory(
     var menu: MutableSet<Menu> = mutableSetOf(),
 )
 
-fun MenuCategory.toDTO(): CategoryDTO = CategoryDTO(id, name, isSpecial)
+fun MenuCategory.toDto(): CategoryDTO = CategoryDTO(id, name, isSpecial)
