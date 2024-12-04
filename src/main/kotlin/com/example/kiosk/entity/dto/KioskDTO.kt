@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size
 import org.jetbrains.annotations.NotNull
 import java.util.UUID
 
-data class RegisterKioskDTO(
+data class KioskDTO(
     @NotNull
     @Size(max = 36)
     val id: UUID,

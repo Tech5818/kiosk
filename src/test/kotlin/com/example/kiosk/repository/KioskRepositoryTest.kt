@@ -88,4 +88,34 @@ class KioskRepositoryTest {
 
         assertEquals(false, findByIdKiosk.isPresent)
     }
+
+    @Test
+    @DisplayName("키오스크 테이블 번호 존재")
+    fun `is exist kiosk`() {
+        val number = 10
+
+        repository.save(Kiosk(
+            UUID.randomUUID(),
+            number
+        ))
+
+        val isExist = repository.existsByNumber(number)
+
+        assertEquals(true, isExist)
+    }
+
+    @Test
+    @DisplayName("키오스크 테이블 번호 존재하지 않음")
+    fun `isn't exist kiosk`() {
+        val number = 10
+
+        repository.save(Kiosk(
+            UUID.randomUUID(),
+            number
+        ))
+
+        val isExist = repository.existsByNumber(number+1)
+
+        assertEquals(false, isExist)
+    }
 }
