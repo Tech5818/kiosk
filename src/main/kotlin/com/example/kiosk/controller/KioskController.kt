@@ -18,7 +18,7 @@ import java.util.UUID
 
 @RestController
 @RequestMapping("/kiosk")
-class KioskController(@Autowired val kioskService: KioskService) {
+class KioskController(@Autowired private val kioskService: KioskService) {
     @PostMapping("")
     fun register(@Valid @RequestBody dto: KioskDTO): KioskDTO = kioskService.register(dto)
 
