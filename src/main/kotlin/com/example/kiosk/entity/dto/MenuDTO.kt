@@ -20,9 +20,9 @@ data class MenuDTO(
     @NotNull
     val type: MenuType,
 
-    val discount: Int?,
+    val discount: Int = 0,
 
-    val calories: Double?,
+    val calories: Double = 0.0,
 
     @NotNull
     val category: MenuCategory

@@ -4,7 +4,7 @@ enum class OrderState (
     val key: String,
     val body: String
 ) {
-    PENDING("PENDING", "대기중"),
-    COMPLETED("PENDING", "대기중"),
-    CANCELED("PENDING", "대기중");
+    PENDING("PENDING", "주문"),
+    COMPLETED("COMPLETED", "완료"),
+    CANCELED("CANCELED", "취소");
 }

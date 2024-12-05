@@ -6,4 +6,5 @@ import java.util.UUID
 
 interface KioskRepository: JpaRepository<Kiosk, UUID> {
     fun existsByNumber(number:Int): Boolean
+    fun findByNumber(number: Int): Kiosk?
 }

@@ -28,11 +28,11 @@ class Menu (
 
     @Column(name = "m_discount", length = 3)
     @ColumnDefault("0")
-    var discount: Int? = 0,
+    var discount: Int = 0,
 
     @Column(name = "m_calories")
     @ColumnDefault("0")
-    var calories: Double? = 0.0,
+    var calories: Double = 0.0,
 
     @ManyToOne
     @JoinColumn(name = "mc_id")
