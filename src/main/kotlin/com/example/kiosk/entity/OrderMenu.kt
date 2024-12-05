@@ -9,7 +9,7 @@ class OrderMenu (
     @Column(name = "om_id")
     var id: Long,
 
-    @Column(name = "om_quanity", nullable = false)
+    @Column(name = "om_quantity", nullable = false)
     var quantity: Int,
 
     @ManyToOne(fetch = FetchType.LAZY)

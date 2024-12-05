@@ -1,5 +1,6 @@
 package com.example.kiosk.entity
 
+import com.example.kiosk.entity.dto.MenuDTO
 import jakarta.persistence.*
 import org.hibernate.annotations.ColumnDefault
 import org.hibernate.annotations.DynamicInsert
@@ -10,7 +11,7 @@ import org.hibernate.annotations.DynamicInsert
 class Menu (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "m_id", nullable = false)
-    var id: Long = 0,
+    var id: Long?,
 
     @Column(name = "m_name", nullable = false, length = 30)
     var name: String,
@@ -27,13 +28,24 @@ class Menu (
 
     @Column(name = "m_discount", length = 3)
     @ColumnDefault("0")
-    var discount: Int?,
+    var discount: Int? = 0,
 
     @Column(name = "m_calories")
     @ColumnDefault("0")
-    var calories: Double?,
+    var calories: Double? = 0.0,
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "mc_id")
-    var category: MenuCategory? = null,
+    var category: MenuCategory,
+    )
+
+fun Menu.toDto(): MenuDTO = MenuDTO(
+        this.id,
+        this.name,
+        this.imgPath,
+        this.price,
+        this.type,
+        this.discount,
+        this.calories,
+        this.category
     )

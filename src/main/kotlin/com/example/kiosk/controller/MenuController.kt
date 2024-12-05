@@ -1,6 +1,9 @@
 package com.example.kiosk.controller
 
+import com.example.kiosk.entity.Menu
 import com.example.kiosk.entity.dto.CategoryDTO
+import com.example.kiosk.entity.dto.CreateMenuDTO
+import com.example.kiosk.entity.dto.MenuDTO
 import com.example.kiosk.service.MenuService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,4 +31,19 @@ class MenuController(@Autowired private val menuService: MenuService) {
             dto.isSpecial
         )
     )
+
+    @DeleteMapping("/category/{id}")
+    fun deleteCategory(@PathVariable id: Long) = menuService.deleteCategory(id)
+
+    @PostMapping("")
+    fun createMenu(@Valid @RequestBody dto: CreateMenuDTO): MenuDTO = menuService.createMenu(dto)
+
+    @GetMapping("")
+    fun findAllMenu() : List<MenuDTO> = menuService.findAllMenu()
+
+    @GetMapping("/{id}")
+    fun findByIdMenu(@PathVariable("id") id: Long): MenuDTO = menuService.findByIdMenu(id)
+
+    @DeleteMapping("/{id}")
+    fun deleteMenu(@PathVariable("id") id: Long) = menuService.deleteMenu(id)
 }

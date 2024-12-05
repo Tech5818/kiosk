@@ -19,9 +19,6 @@ class MenuCategory(
     @Column(name = "mc_is_special")
     @ColumnDefault("0")
     var isSpecial: Boolean,
-
-    @OneToMany(mappedBy = "category")
-    var menu: MutableSet<Menu> = mutableSetOf(),
 )
 
 fun MenuCategory.toDto(): CategoryDTO = CategoryDTO(id, name, isSpecial)

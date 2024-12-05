@@ -5,7 +5,7 @@ import com.example.kiosk.entity.MenuCategory
 import com.example.kiosk.entity.MenuType
 import org.jetbrains.annotations.NotNull
 
-data class MenuDTO(
+data class CreateMenuDTO(
     val id: Long?,
 
     @NotNull
@@ -20,14 +20,14 @@ data class MenuDTO(
     @NotNull
     val type: MenuType,
 
-    val discount: Int?,
+    val discount: Int? = 0,
 
-    val calories: Double?,
+    val calories: Double? = 0.0,
 
     @NotNull
-    val category: MenuCategory
+    val categoryId: Long
 ) {
-    fun toEntity() : Menu = Menu(
+    fun toEntity(category: MenuCategory) : Menu = Menu(
         id,
         name,
         imgPath,
@@ -36,5 +36,5 @@ data class MenuDTO(
         discount,
         calories,
         category
-        )
+    )
 }
