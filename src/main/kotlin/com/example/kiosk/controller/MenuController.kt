@@ -1,6 +1,7 @@
 package com.example.kiosk.controller
 
 import com.example.kiosk.entity.Menu
+import com.example.kiosk.entity.MenuType
 import com.example.kiosk.entity.dto.CategoryDTO
 import com.example.kiosk.entity.dto.CreateMenuDTO
 import com.example.kiosk.entity.dto.MenuDTO
@@ -8,6 +9,7 @@ import com.example.kiosk.service.MenuService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("/menu")
@@ -36,7 +38,15 @@ class MenuController(@Autowired private val menuService: MenuService) {
     fun deleteCategory(@PathVariable id: Long) = menuService.deleteCategory(id)
 
     @PostMapping("")
-    fun createMenu(@Valid @RequestBody dto: CreateMenuDTO): MenuDTO = menuService.createMenu(dto)
+    fun createMenu(
+        @RequestParam name: String,
+        @RequestParam img: MultipartFile,
+        @RequestParam price: Long,
+        @RequestParam type: MenuType,
+        @RequestParam discount: Int = 0,
+        @RequestParam calories: Double = 0.0,
+        @RequestParam categoryId: Long
+    ): MenuDTO = menuService.createMenu(name, img, price, type, discount, calories, categoryId)
 
     @GetMapping("")
     fun findAllMenu() : List<MenuDTO> = menuService.findAllMenu()

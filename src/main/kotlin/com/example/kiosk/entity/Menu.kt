@@ -16,7 +16,7 @@ class Menu (
     @Column(name = "m_name", nullable = false, length = 30)
     var name: String,
 
-    @Column(name = "m_img_path", nullable = false, length = 100)
+    @Column(name = "m_img_path", nullable = false, length = 300)
     var imgPath: String,
 
     @Column(name = "m_price", nullable = false, length = 30)
